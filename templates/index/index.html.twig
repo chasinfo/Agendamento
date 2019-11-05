@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div style="margin: 10px">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Agendamento</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                {% for key, value in agendas %}
+                    <h6>{{ key }}</h6>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Data/Hora</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Serviço</th>
+                            <th scope="col">Profissional</th>
+                            <th scope="col">Situação</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for agenda in value %}
+                        <tr>
+                            <td>{{ agenda.data_hora }}</td>
+                            <td>{{ agenda.cliente }}</td>
+                            <td>{{ agenda.servico }}</td>
+                            <td>{{ agenda.profissional }}</td>
+                            <td>{{ agenda.situacao }}</td>
+                            <td>Alterar | Excluir</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <h3>Registro não encontrado</h3>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

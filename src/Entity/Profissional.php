@@ -19,7 +19,7 @@ class Profissional
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idProfissional;
+    private $id;
 
     /**
      * @var string
@@ -61,7 +61,7 @@ class Profissional
 
     public function getIdProfissional(): ?int
     {
-        return $this->idProfissional;
+        return $this->id;
     }
 
     public function getNome(): ?string

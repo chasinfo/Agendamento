@@ -19,7 +19,7 @@ class Cliente
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idCliente;
+    private $id;
 
     /**
      * @var string
@@ -61,7 +61,7 @@ class Cliente
 
     public function getIdCliente(): ?int
     {
-        return $this->idCliente;
+        return $this->id;
     }
 
     public function getNome(): ?string

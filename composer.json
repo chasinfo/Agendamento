@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "sensio/framework-extra-bundle": "^5.5",
         "sensiolabs/security-checker": "^6.0",
+        "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
         "symfony/dotenv": "4.3.*",
         "symfony/flex": "^1.4",
@@ -15,6 +16,7 @@
         "symfony/orm-pack": "^1.0",
         "symfony/requirements-checker": "^1.1",
         "symfony/twig-pack": "^1.0",
+        "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {

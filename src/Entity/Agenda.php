@@ -51,37 +51,34 @@ class Agenda
      * @var \Cliente
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Cliente")
+     * @ORM\ManyToOne(targetEntity="Cliente")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_CLIENTE", referencedColumnName="ID_CLIENTE")
      * })
      */
-    private $idCliente;
+    private $cliente;
 
     /**
      * @var \Profissional
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Profissional")
+     * @ORM\ManyToOne(targetEntity="Profissional")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_PROFISSIONAL", referencedColumnName="ID_PROFISSIONAL")
      * })
      */
-    private $idProfissional;
+    private $profissional;
 
     /**
      * @var \Servico
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Servico")
+     * @ORM\ManyToOne(targetEntity="Servico")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_SERVICO", referencedColumnName="ID_SERVICO")
      * })
      */
-    private $idServico;
+    private $servico;
 
     /**
      * @var \Usuario
@@ -122,6 +119,16 @@ class Agenda
         return $this->situacao;
     }
 
+    public function getNomeSituacao(): ?string
+    {
+        if ($this->situacao == 'A')
+            return 'Aguardando';
+        if ($this->situacao == 'O')
+            return 'Confirmado';
+        if ($this->situacao == 'C')
+            return 'Cancelado';
+    }
+
     public function setSituacao(string $situacao): self
     {
         $this->situacao = $situacao;
@@ -153,41 +160,51 @@ class Agenda
         return $this;
     }
 
-    public function getIdCliente(): ?Cliente
+    public function getCliente(): ?Cliente
     {
-        return $this->idCliente;
+        return $this->cliente;
     }
 
-    public function setIdCliente(?Cliente $idCliente): self
+    public function setCliente(\Cliente $cliente): Agenda
     {
-        $this->idCliente = $idCliente;
-
+        $this->cliente = $cliente;
         return $this;
     }
 
-    public function getIdProfissional(): ?Profissional
+    /**
+     * @return \Profissional
+     */
+    public function getProfissional(): ?Profissional
     {
-        return $this->idProfissional;
+        return $this->profissional;
     }
 
-    public function setIdProfissional(?Profissional $idProfissional): self
+    /**
+     * @param \Profissional $profissional
+     * @return Agenda
+     */
+    public function setProfissional(\Profissional $profissional): Agenda
     {
-        $this->idProfissional = $idProfissional;
-
+        $this->profissional = $profissional;
         return $this;
     }
 
-    public function getIdServico(): ?Servico
+    public function getServico(): ?Servico
     {
-        return $this->idServico;
+        return $this->servico;
     }
 
-    public function setIdServico(?Servico $idServico): self
+    /**
+     * @param \Servico $servico
+     * @return Agenda
+     */
+    public function setServico(\Servico $servico): Agenda
     {
-        $this->idServico = $idServico;
-
+        $this->servico = $servico;
         return $this;
     }
+
+
 
     public function getIdUsuario(): ?Usuario
     {
