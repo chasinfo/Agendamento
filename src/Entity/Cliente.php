@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Cliente
  *
  * @ORM\Table(name="cliente", uniqueConstraints={@ORM\UniqueConstraint(name="UN_EMAIL", columns={"EMAIL"})}, indexes={@ORM\Index(name="IDX_NOME", columns={"NOME"}), @ORM\Index(name="FK_USUARIO_CLIENTE", columns={"ID_USUARIO"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ClienteRepository")
  */
 class Cliente
 {
@@ -59,7 +59,7 @@ class Cliente
      */
     private $idUsuario;
 
-    public function getIdCliente(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }

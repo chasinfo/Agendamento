@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Servico
  *
  * @ORM\Table(name="servico", indexes={@ORM\Index(name="FK_USUARIIO_SERVICO", columns={"ID_USUARIO"}), @ORM\Index(name="IDX_NOME", columns={"NOME"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ServicoRepository")
  */
 class Servico
 {
@@ -19,7 +19,7 @@ class Servico
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idServico;
+    private $id;
 
     /**
      * @var string
@@ -31,7 +31,7 @@ class Servico
     /**
      * @var float
      *
-     * @ORM\Column(name="VALOR", type="float", precision=10, scale=0, nullable=false, options={"comment"="Mantém o valor do serviço."})
+     * @ORM\Column(name="VALOR", type="float", precision=10, scale=2, nullable=false, options={"comment"="Mantém o valor do serviço."})
      */
     private $valor;
 
@@ -52,9 +52,9 @@ class Servico
      */
     private $idUsuario;
 
-    public function getIdServico(): ?int
+    public function getId(): ?int
     {
-        return $this->idServico;
+        return $this->id;
     }
 
     public function getNome(): ?string

@@ -1,0 +1,41 @@
+{{ form_start(form, {"attr": {"novalidate": "novalidate"}}) }}
+
+<div class="form-group">
+    {{ form_label(form.cliente) }}
+    {{ form_widget(form.cliente) }}
+    {{ form_errors(form.cliente) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.profissional) }}
+    {{ form_widget(form.profissional) }}
+    {{ form_errors(form.profissional) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.servico) }}
+    {{ form_widget(form.servico) }}
+    {{ form_errors(form.servico) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.inicio) }}
+    {{ form_widget(form.inicio) }}
+    {{ form_errors(form.inicio) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.fim) }}
+    {{ form_widget(form.fim) }}
+    {{ form_errors(form.fim) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.situacao) }}
+    {{ form_widget(form.situacao) }}
+    {{ form_errors(form.situacao) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.observacao) }}
+    {{ form_widget(form.observacao) }}
+    {{ form_errors(form.observacao) }}
+</div>
+
+{{ form_widget(form.enviar) }}

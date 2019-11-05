@@ -11,4 +11,14 @@ class ServicoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Servico::class);
     }
+
+    public function fetchPairs()
+    {
+        $dados = $this->findAll();
+        $result = [];
+        foreach($dados as $d) {
+            $result[$d->getNome()] = $d->getId();
+        }
+        return $result;
+    }
 }

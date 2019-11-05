@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div style="margin: 10px">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('agendamento_index') }}">Agendamento</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+                </ol>
+            </nav>
+            {% include "index/_form.html.twig" %}
+        </div>
+    </div>
+{% endblock %}

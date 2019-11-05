@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Agenda
@@ -15,16 +16,16 @@ class Agenda
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="INICIO", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP","comment"="Hora de início do serviço"})
+     * @ORM\Column(name="INICIO", type="datetime", nullable=false, options={"comment"="Hora de início do serviço"})
      */
-    private $inicio = 'CURRENT_TIMESTAMP';
+    private $inicio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="FIM", type="datetime", nullable=false, options={"default"="0000-00-00 00:00:00","comment"="Hora fim do serviço"})
+     * @ORM\Column(name="FIM", type="datetime", nullable=false, options={"comment"="Hora fim do serviço"})
      */
-    private $fim = '0000-00-00 00:00:00';
+    private $fim;
 
     /**
      * @var string
@@ -90,26 +91,26 @@ class Agenda
      */
     private $idUsuario;
 
-    public function getInicio(): ?\DateTimeInterface
+    public function getInicio($format = 'Y-m-d H:i:s')
     {
-        return $this->inicio;
+         return !empty($this->inicio) ? $this->inicio->format($format) : null;
     }
 
-    public function setInicio(\DateTimeInterface $inicio): self
+    public function setInicio($inicio)
     {
-        $this->inicio = $inicio;
+        $this->inicio = new \DateTime($inicio);
 
         return $this;
     }
 
-    public function getFim(): ?\DateTimeInterface
+    public function getFim($format = 'Y-m-d H:i:s')
     {
-        return $this->fim;
+        return !empty($this->fim) ? $this->fim->format($format) : null;
     }
 
-    public function setFim(\DateTimeInterface $fim): self
+    public function setFim($fim)
     {
-        $this->fim = $fim;
+        $this->fim = new \DateTime($fim);
 
         return $this;
     }
