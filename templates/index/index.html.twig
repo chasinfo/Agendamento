@@ -9,7 +9,6 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
@@ -24,6 +23,12 @@
                      <a class="btn btn-primary btn-sm" href="{{ path('agendamento_create') }}">Novo Cadastro</a>
                 </div>
             </nav>
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success" style="margin: 10px">
+                    {{ message }}
+                </div>
+            {% endfor %}
 
             <div class="row" style="margin: 10px">
                 {% for key, value in agendas %}
@@ -48,8 +53,8 @@
                             <td>{{ agenda.profissional }}</td>
                             <td>{{ agenda.situacao }}</td>
                             <td class="text-right">
-                                <button class="btn btn-primary btn-sm" type="submit">Alterar</button> &nbsp;
-                                <button class="btn btn-danger btn-sm" type="submit">Excluir</button>
+                                <a class="btn btn-primary btn-sm" href="{{ path('agendamento_editar', {'cliente': agenda.id_cliente, 'servico': agenda.id_servico, 'profissional': agenda.id_profissional}) }}">Alterar</a>
+                                <a class="btn btn-danger btn-sm" href="{{ path('agendamento_delete', {'cliente': agenda.id_cliente, 'servico': agenda.id_servico, 'profissional': agenda.id_profissional}) }}">Excluir</a>
                             </td>
                         </tr>
                         {% endfor %}

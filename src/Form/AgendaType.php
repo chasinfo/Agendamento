@@ -51,15 +51,17 @@ class AgendaType extends AbstractType
             ])
 
             ->add('inicio', ChoiceType::class, [
-                'label' => 'Data Início',
+                'label' => 'Início',
                 'placeholder' => '',
                 'choices'=>$arDataAgenda,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-            ->add('fim', TextType::class, [
-                'label' => 'Data Fim',
+            ->add('fim', ChoiceType::class, [
+                'label' => 'Fim',
+                'placeholder' => '',
+                'choices'=>$arDataAgenda,
                 'attr' => [
                     'class' => 'form-control'
                 ]

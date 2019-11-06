@@ -57,7 +57,7 @@ class Cliente
      *   @ORM\JoinColumn(name="ID_USUARIO", referencedColumnName="ID_USUARIO")
      * })
      */
-    private $idUsuario;
+    private $usuario;
 
     public function getId(): ?int
     {
@@ -112,16 +112,21 @@ class Cliente
         return $this;
     }
 
-    public function getIdUsuario(): ?Usuario
+    public function getUsuario()
     {
-        return $this->idUsuario;
+        return $this->usuario;
     }
 
-    public function setIdUsuario(?Usuario $idUsuario): self
+    public function setUsuario($usuario)
     {
-        $this->idUsuario = $idUsuario;
+        $this->usuario = $usuario;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 
 

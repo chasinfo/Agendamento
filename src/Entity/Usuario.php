@@ -59,8 +59,7 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="PERFIL", type="string", length=1, nullable=false, options={"default"="F","fixed"=true,"comment"="Perfil de acesso ao sistema.
-            C: Usuário Cliente; F: Usuário Funcionário"})
+     * @ORM\Column(name="PERFIL", type="string", length=1, nullable=false, options={"default"="F","fixed"=true,"comment"="Perfil de acesso ao sistema. C: Usuário Cliente; F: Usuário Funcionário"})
      */
     private $perfil = 'F';
 
@@ -139,6 +138,11 @@ class Usuario
         $this->perfil = $perfil;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 
 

@@ -89,7 +89,7 @@ class Agenda
      *   @ORM\JoinColumn(name="ID_USUARIO", referencedColumnName="ID_USUARIO")
      * })
      */
-    private $idUsuario;
+    private $usuario;
 
     public function getInicio($format = 'Y-m-d H:i:s')
     {
@@ -154,19 +154,19 @@ class Agenda
         return $this->atualizacao;
     }
 
-    public function setAtualizacao(\DateTimeInterface $atualizacao): self
+    public function setAtualizacao($atualizacao)
     {
-        $this->atualizacao = $atualizacao;
+        $this->atualizacao = new \DateTime();
 
         return $this;
     }
 
-    public function getCliente(): ?Cliente
+    public function getCliente()
     {
         return $this->cliente;
     }
 
-    public function setCliente(\Cliente $cliente): Agenda
+    public function setCliente($cliente)
     {
         $this->cliente = $cliente;
         return $this;
@@ -175,7 +175,7 @@ class Agenda
     /**
      * @return \Profissional
      */
-    public function getProfissional(): ?Profissional
+    public function getProfissional()
     {
         return $this->profissional;
     }
@@ -184,13 +184,13 @@ class Agenda
      * @param \Profissional $profissional
      * @return Agenda
      */
-    public function setProfissional(\Profissional $profissional): Agenda
+    public function setProfissional($profissional)
     {
         $this->profissional = $profissional;
         return $this;
     }
 
-    public function getServico(): ?Servico
+    public function getServico()
     {
         return $this->servico;
     }
@@ -199,7 +199,7 @@ class Agenda
      * @param \Servico $servico
      * @return Agenda
      */
-    public function setServico(\Servico $servico): Agenda
+    public function setServico($servico)
     {
         $this->servico = $servico;
         return $this;
@@ -207,16 +207,21 @@ class Agenda
 
 
 
-    public function getIdUsuario(): ?Usuario
+    public function getUsuario()
     {
-        return $this->idUsuario;
+        return $this->usuario;
     }
 
-    public function setIdUsuario(?Usuario $idUsuario): self
+    public function setUsuario($usuario)
     {
-        $this->idUsuario = $idUsuario;
+        $this->usuario = $usuario;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 
 
